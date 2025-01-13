@@ -1,0 +1,705 @@
+{
+	"info": {
+		"_postman_id": "133297a1-3775-4c0e-b757-503bc97cff16",
+		"name": "TradeX",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29282463"
+	},
+	"item": [
+		{
+			"name": "Withdrawal",
+			"item": [
+				{
+					"name": "Make A Withdrawal",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Nzg0NDIzNjBjNDBhOTUzNjA5YWM3YTUiLCJpYXQiOjE3MzY3NDE2MDQsImV4cCI6MTczNjc0MjIwNH0.E8ZOt92KT0TI5K7lDNxOBP5I9IovT3373EQ_hCBNA5Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"amount\": 500,\n    \"walletAddress\": \"hshshhshss\",\n    \"walletNetwork\": \"ERC20\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3069/api/v1/withdrawals/new",
+							"host": [
+								"localhost"
+							],
+							"port": "3069",
+							"path": [
+								"api",
+								"v1",
+								"withdrawals",
+								"new"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Confirm Withdrawal",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Nzg0M2NlYjE1MmI0MGEwODljNmQ4NDgiLCJpYXQiOjE3MzY3NDIxMzAsImV4cCI6MTczNjc0MjczMH0.9WjT_IBJaciHrJJ3TgJIfSEZaIres1cNYO5wm6K6_B8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"approved\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3069/api/v1/withdrawals/678492f4cf214fc8aede3dd3/confirm",
+							"host": [
+								"localhost"
+							],
+							"port": "3069",
+							"path": [
+								"api",
+								"v1",
+								"withdrawals",
+								"678492f4cf214fc8aede3dd3",
+								"confirm"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search Withdrawals",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Nzg0NDIzNjBjNDBhOTUzNjA5YWM3YTUiLCJpYXQiOjE3MzY3NDE0ODAsImV4cCI6MTczNjc0MjA4MH0.43HTRGbT1Huml67vXLsiz27sndNgTL6Rjty5vYqWAnA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"approved\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3069/api/v1/withdrawals",
+							"host": [
+								"localhost"
+							],
+							"port": "3069",
+							"path": [
+								"api",
+								"v1",
+								"withdrawals"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get A Withdrawal",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Nzg0NDIzNjBjNDBhOTUzNjA5YWM3YTUiLCJpYXQiOjE3MzY3NDE0ODAsImV4cCI6MTczNjc0MjA4MH0.43HTRGbT1Huml67vXLsiz27sndNgTL6Rjty5vYqWAnA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"approved\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3069/api/v1/withdrawals/678492f4cf214fc8aede3dd3",
+							"host": [
+								"localhost"
+							],
+							"port": "3069",
+							"path": [
+								"api",
+								"v1",
+								"withdrawals",
+								"678492f4cf214fc8aede3dd3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete A Withdrawal",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Nzg0M2NlYjE1MmI0MGEwODljNmQ4NDgiLCJpYXQiOjE3MzY3NDI0MDAsImV4cCI6MTczNjc0MzAwMH0.CTsMM8bjokUc9HVD6AGybvhUBxH53aQxMF3IZoYl_3Y",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3069/api/v1/withdrawals/678492f4cf214fc8aede3dd3",
+							"host": [
+								"localhost"
+							],
+							"port": "3069",
+							"path": [
+								"api",
+								"v1",
+								"withdrawals",
+								"678492f4cf214fc8aede3dd3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Deposit",
+			"item": [
+				{
+					"name": "Delete A Deposit",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Nzg0NDIzNjBjNDBhOTUzNjA5YWM3YTUiLCJpYXQiOjE3MzY3NDI3NjYsImV4cCI6MTczNjc0MzM2Nn0.CFrSaGBQikqr2umspSSLsxLCMBrBxVpNGzaGEwg2o_A",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3069/api/v1/deposits/6784790bc304c7084d32f06a",
+							"host": [
+								"localhost"
+							],
+							"port": "3069",
+							"path": [
+								"api",
+								"v1",
+								"deposits",
+								"6784790bc304c7084d32f06a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search Deposits",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Nzg0NDIzNjBjNDBhOTUzNjA5YWM3YTUiLCJpYXQiOjE3MzY3NDI1MDcsImV4cCI6MTczNjc0MzEwN30.pZC7Gk8Lv9RzLXKWsaGL1cwx01oYkraatpk-MRHqZ3g",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"approved\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3069/api/v1/deposits",
+							"host": [
+								"localhost"
+							],
+							"port": "3069",
+							"path": [
+								"api",
+								"v1",
+								"deposits"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Make A Deposit",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Nzg0NDIzNjBjNDBhOTUzNjA5YWM3YTUiLCJpYXQiOjE3MzY3NDMwMzAsImV4cCI6MTczNjc0MzYzMH0.DEOQTCykCcmISLV69znHcwbcZmdbUjo_Xa3C_-KizdU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"amount\": 1200000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3069/api/v1/deposits/new",
+							"host": [
+								"localhost"
+							],
+							"port": "3069",
+							"path": [
+								"api",
+								"v1",
+								"deposits",
+								"new"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get A Deposit",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Nzg0NDIzNjBjNDBhOTUzNjA5YWM3YTUiLCJpYXQiOjE3MzY3NDI3NjYsImV4cCI6MTczNjc0MzM2Nn0.CFrSaGBQikqr2umspSSLsxLCMBrBxVpNGzaGEwg2o_A",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"approved\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3069/api/v1/deposits/6784433c0c40a953609ac7ac",
+							"host": [
+								"localhost"
+							],
+							"port": "3069",
+							"path": [
+								"api",
+								"v1",
+								"deposits",
+								"6784433c0c40a953609ac7ac"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Confirm Deposit",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Nzg0M2NlYjE1MmI0MGEwODljNmQ4NDgiLCJpYXQiOjE3MzY3NDMxMjYsImV4cCI6MTczNjc0MzcyNn0.HXHUmPN1wUQnkK3b6P9G1uwLIdI1CBt_RVLuOnot5gc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"approved\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3069/api/v1/deposits/6784989ccebf2bf7a2fd9177/confirm",
+							"host": [
+								"localhost"
+							],
+							"port": "3069",
+							"path": [
+								"api",
+								"v1",
+								"deposits",
+								"6784989ccebf2bf7a2fd9177",
+								"confirm"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\": \"Somtochukwu\",\n    \"lastName\": \"Uzuakpunwa\",\n    \"email\": \"uzuakpunwasomtuzy@gmail.com\",\n    \"password\": \"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3069/api/v1/auth/register",
+							"host": [
+								"localhost"
+							],
+							"port": "3069",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    // \"email\": \"uzuakpunwasomtuzy@gmail.com\",\n    \"email\": \"somto.onyeka@yahoo.com\",\n    \"password\": \"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3069/api/v1/auth/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3069",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3069/api/v1/auth/logout",
+							"host": [
+								"localhost"
+							],
+							"port": "3069",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Search Users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Nzg0M2NlYjE1MmI0MGEwODljNmQ4NDgiLCJpYXQiOjE3MzY3NDMyNTIsImV4cCI6MTczNjc0Mzg1Mn0.syy8_1lU1LOez9WFDIUYoWV7NRS92Y6HLUoI657hB0s",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3069/api/v1/users",
+							"host": [
+								"localhost"
+							],
+							"port": "3069",
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get A User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Nzg0M2NlYjE1MmI0MGEwODljNmQ4NDgiLCJpYXQiOjE3MzY3NDMyNTIsImV4cCI6MTczNjc0Mzg1Mn0.syy8_1lU1LOez9WFDIUYoWV7NRS92Y6HLUoI657hB0s",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3069/api/v1/users/678442360c40a953609ac7a5",
+							"host": [
+								"localhost"
+							],
+							"port": "3069",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"678442360c40a953609ac7a5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update One User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Nzg0NDIzNjBjNDBhOTUzNjA5YWM3YTUiLCJpYXQiOjE3MzY3NDM5NDIsImV4cCI6MTczNjc0NDU0Mn0.xcibthVkMHI0CiGp30m2YIYYe-2ZUTsG922SeU3XqBw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\": \"Fucker\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3069/api/v1/users/678442360c40a953609ac7a5",
+							"host": [
+								"localhost"
+							],
+							"port": "3069",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"678442360c40a953609ac7a5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete One User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Nzg0M2NlYjE1MmI0MGEwODljNmQ4NDgiLCJpYXQiOjE3MzY3NDQ3MTAsImV4cCI6MTczNjc0NTMxMH0.4xM4w2Iii8xpuQL2KG07AZlqb1ryoeud_14QFq1Ez2c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3069/api/v1/users/67849eea152b40a089c6d84c",
+							"host": [
+								"localhost"
+							],
+							"port": "3069",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"67849eea152b40a089c6d84c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update A User's Balance",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Nzg0M2NlYjE1MmI0MGEwODljNmQ4NDgiLCJpYXQiOjE3MzY3NDQxNjUsImV4cCI6MTczNjc0NDc2NX0.s75zyQyArfsvnnKxjp6egrS_o2bn3oswmQVpcB21ShU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"balance\": 500\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3069/api/v1/users/678442360c40a953609ac7a5/update-balance",
+							"host": [
+								"localhost"
+							],
+							"port": "3069",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"678442360c40a953609ac7a5",
+								"update-balance"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
