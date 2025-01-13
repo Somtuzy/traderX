@@ -1,0 +1,10 @@
+signup
+login
+markets => investments(current)
+stake history => investments(past)
+trading packages => deposit/invest
+withdrawal
+profile
+
+after deposit, have an "i've paid" to email admin.
+after withdrawal, check balance and email details to admin.

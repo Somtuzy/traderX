@@ -1,0 +1,35 @@
+import { Schema, model } from "mongoose";
+import { IDeposit } from "@interfaces";
+
+const depositSchema = new Schema<IDeposit>({
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+    required: true
+  },
+  amount: {
+    type: Number,
+    required: true,
+    min: 1  
+  },
+  status: {
+    type: String,
+    required: true,
+    enum: ["pending", "approved", "rejected"],
+    default: "pending"
+  },
+  isDeleted: {
+    type: Boolean,
+    default: false
+  }
+}, {
+  timestamps: true,
+  toJSON: {
+    virtuals: true
+  },
+  toObject: {
+    virtuals: true
+  }
+});
+
+export default model<IDeposit>("Deposit", depositSchema);

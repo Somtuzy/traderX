@@ -1,0 +1,16 @@
+[
+    {
+        "_id": "67142bc188bcdf75ae067119",
+        "title": "basic",
+        "description": "something very basic.",
+        "icon": "https://c8.alamy.com/comp/DCB805/variety-of-grocery-products-fruits-vegetables-meat-cheese-and-bread-DCB805.jpg",
+        "isDeleted": false
+    },
+    {
+        "_id": "67142bd488bcdf75ae06711a",
+        "title": "premium",
+        "description": "something very premium.",
+        "icon": "https://media.istockphoto.com/id/1247952445/photo/female-hands-holding-shopping-basket-with-cosmetics-on-pink-background-beauty-products-sale.jpg?s=612x612&w=0&k=20&c=XXrbSlWX-dYWn9HYGJj4x2xjQEdFN1vOrJu860GeeNo=",
+        "isDeleted": false
+    }
+]
