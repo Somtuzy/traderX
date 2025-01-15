@@ -9,8 +9,8 @@ import {
 } from "./error.service";
 import { userService } from "@services";
 import { ICreateWithdrawal, IWithdrawal, IUser } from "@interfaces";
-import { isAuthorised } from "@utils";
-import { generateHtml, sendMail } from "@utils/sendMail.util";
+import { isAuthorised, generateHtml, sendMail } from "@utils";
+import { ADMINS, MAIL_DOMAIN as domain } from "@configs";
 
 export class WithdrawalService<T extends IWithdrawal> extends GenericService<T> {
     constructor(model: Model<T>) {
@@ -153,17 +153,18 @@ export class WithdrawalService<T extends IWithdrawal> extends GenericService<T> 
         await sendMail({
             to: user.email,
             subject: "Withdrawal Request",
-            body,
+            from: `The GoldenCoin Team <no-reply@${domain}>`,
             html: generateHtml(user.firstName, body)
         })
 
-        body = `A user with email: ${email} has requested to withdraw ${amount} with the details below:\n Wallet: ${walletAddress}\n Network: ${network}.`
+        body = `A user with email ${email} has requested a withdrawal of $${amount} to be sent to the wallet address ${walletAddress} under ${network} wallet network.`
 
+        const admins = ADMINS.split(",")
         await sendMail({
-            to: "somto.onyeka@yahoo.com",
+            to: admins,
             subject: "Withdrawal Request",
-            replyTo: user.email,
-            body,
+            from: `Admin <admin@${domain}>`,
+            reply_to: user.email,
             html: generateHtml("Admin", body)
         })
 

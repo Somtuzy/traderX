@@ -1,84 +1,88 @@
-import { Resend } from "resend";
 import sanitizeHtml from "sanitize-html";
-import { Transporter } from "nodemailer";
-import SMTPTransport from "nodemailer/lib/smtp-transport";
-import { MAIL_ADDRESS as sender } from "@configs";
-import { mailers } from "@configs/mail.config";
+import { resend } from "@configs/mail.config";
 import capitalizeString from "./capitalise.util";
 
 type MailData = {
-    // from: string;
+    from: string;
     to: string | string[];
     subject: string;
-    replyTo?: string;
-    // sender: string;
-    body: string;
+    reply_to?: string;
     html: string;
 };
 
-// Track the mailer keys and current index
-const mailerKeys = Object.keys(mailers);
-let currentMailerIndex = 0;
-
-// Helper to get the next mailer key
-function getNextMailerKey() {
-    const mailerKey = mailerKeys[currentMailerIndex] as "resend" | "nodemailer";
-    currentMailerIndex = (currentMailerIndex + 1) % mailerKeys.length;
-    return mailerKey;
-}
-
 export async function sendMail(mailData: MailData) {
     try {
-        const mailerKey = getNextMailerKey();
-        const mailer = mailers[mailerKey];
+        const { data, error } = await resend.emails.send(mailData);
 
-        if (mailerKey === "resend") {
-            const resend = mailer as Resend
-            const { data, error } = await resend.emails.send({
-                ...mailData,
-                from: "The Trading Team <onboarding@tehcville.com>",
-                // from: `Team <${sender}>`
-            });
-
-            if (error) {
-                throw new Error(error as unknown as string);
-            }
-
-            console.log("sent mail data:", data);
+        if (error) {
+            throw new Error(error as unknown as string);
         }
 
-        if (mailerKey === "nodemailer") {
-            const transporter = mailer as Transporter<SMTPTransport.SentMessageInfo>;
-            const data = await transporter.sendMail({
-                ...mailData,
-                sender
-            });
-
-            console.log("sent mail data:", data);
-        }
-
-        console.log(`Email sent successfully via ${mailerKey}`);
+        console.log("sent mail data:", data);
     } catch (error: any) {
-        console.log("error sending mail:", error.message);
+        console.log("error sending mail:");
+        console.log({ ...error });
     }
 
 }
 
 export function generateHtml(recipient: string, body: string) {
-    const safeBody = sanitizeHtml(body, { allowedTags: ["b", "i", "strong", "em"], allowedAttributes: {} });
+    // Sanitize and replace line breaks with <br> tags
+    const safeBody = sanitizeHtml(body, {
+        allowedTags: ["b", "i", "strong", "em", "br"],
+        allowedAttributes: {}
+    }).replace(/\n/g, "<br>");
+
     return `<!doctype html>
         <html>
             <head>
                 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+                <style>
+                    body {
+                        font-family: Arial, sans-serif;
+                        margin: 0;
+                        padding: 0;
+                        background-color: #f4f4f4;
+                    }
+                    .main {
+                        display: block;
+                        margin: auto;
+                        max-width: 600px;
+                        background: #ffffff;
+                        padding: 20px;
+                        border-radius: 8px;
+                        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                    }
+                    .header {
+                        font-size: 20px;
+                        font-weight: bold;
+                        margin-bottom: 20px;
+                        color: #333333;
+                    }
+                    .body {
+                        font-size: 16px;
+                        line-height: 1.6;
+                        color: #555555;
+                        white-space: pre-wrap;
+                    }
+                    .footer {
+                        font-size: 14px;
+                        font-weight: bold;
+                        margin-top: 20px;
+                        color: #333333;
+                    }
+                </style>
             </head>
-            <body style="font-family: sans-serif;">
-                <div style="display: block; margin: auto; max-width: 600px;" class="main">
-                    <div>
-                        <h1 style="font-size: 18px; font-weight: bold; margin-top: 20px">Hello ${capitalizeString(recipient)},</h1>
+            <body>
+                <div class="main">
+                    <div class="header">
+                        Hello ${capitalizeString(recipient)},
+                    </div>
+                    <div class="body">
                         ${safeBody}
                     </div>
-                    <div>
-                        <h1 style="font-size: 18px; font-weight: bold; margin-top: 20px">The Trading Team</h1>
+                    <div class="footer">
+                        The Trading Team
                     </div>
                 </div>
             </body>

@@ -13,7 +13,8 @@ export const ROUNDS = parseFloat(process.env.ROUNDS!)
 export const RESEND_API_KEY = process.env.RESEND_API_KEY!
 export const NODEMAILER_MAIL_USERNAME = process.env.NODEMAILER_MAIL_USERNAME!
 export const NODEMAILER_MAIL_PASSWORD = process.env.NODEMAILER_MAIL_PASSWORD!
-export const MAIL_ADDRESS = process.env.MAIL_ADDRESS
+export const MAIL_DOMAIN = process.env.MAIL_DOMAIN!
+export const ADMINS = process.env.ADMINS!
 
 // middleware configurations
 export const morganOptions = `:date[iso] :method :url :status :response-time ms :remote-addr :http-version :referrer :user-agent`;

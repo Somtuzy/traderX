@@ -9,3 +9,4 @@ export { default as capitalizeString } from "./capitalise.util";
 export { hasDuplicateKey, getTotal } from "./array_and_object.util";
 export { getValidationFields } from "./getValidationFields";
 export { isAuthorised } from "./authorise.util";
+export * from "./sendMail.util"

@@ -1,7 +1,7 @@
 // app messages
 export const MESSAGES = {
     SIGNUP_SUCCESSFUL: "You have succesfully signed up",
-    SIGNUP_SUCCESS_MAIL: "Welcome to TradeX. Please verify your email to continue",
+    SIGNUP_SUCCESS_MAIL: "Welcome to GoldenCoin. We hope you like it here.",
     SIGNUP_FAILED: "Sign up failed",
     USER_NOT_FOUND: "User not found",
     USER_ALREADY_EXISTS: "User already exists",

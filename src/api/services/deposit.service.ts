@@ -7,8 +7,9 @@ import {
     InternalException
 } from "./error.service";
 import { ICreateDeposit, IDeposit, IUser } from "@interfaces";
-import { isAuthorised } from "@utils";
+import { isAuthorised, generateHtml, sendMail } from "@utils";
 import userService from "./user.service";
+import { MAIL_DOMAIN as domain, ADMINS } from "@configs";
 
 export class DepositService<T extends IDeposit> extends GenericService<T> {
     constructor(model: Model<T>) {
@@ -30,6 +31,29 @@ export class DepositService<T extends IDeposit> extends GenericService<T> {
         })
 
         await deposit.save()
+
+        let body = `Your deposit request of $${amount} is processing and will be credited to your wallet address soon.`
+
+        console.log("USSER:", user.email);
+
+        await sendMail({
+            to: user.email,
+            subject: "Withdrawal Request",
+            from: `The GoldenCoin Team <no-reply@${domain}>`,
+            html: generateHtml(user.firstName, body)
+        })
+
+        body = `A user with the email ${user.email} has requested to deposit $${amount} into their wallet.\n\n\n Please log into your dashboard as soon as you receive payment to verify transaction and confirm their deposit.`
+
+        const admins = ADMINS.split(",")
+        await sendMail({
+            to: admins,
+            subject: "Deposit Request",
+            from: `Admin <admin@${domain}>`,
+            reply_to: user.email,
+            html: generateHtml("Admin", body)
+        })
+
 
         return {
             message: `Deposit request sent successfully!`,
