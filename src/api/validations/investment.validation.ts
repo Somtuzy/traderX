@@ -45,11 +45,22 @@ export const InvestmentSchemas = {
             'string.base': 'Wallet Network must be a string.',
             'any.required': 'Wallet Network is required.',
         }),
+        coinType: Joi.string()
+        .min(2)
+        .max(50)
+        .label('Coin Type')
+        .messages({
+            'string.empty': 'Coin Type cannot be empty.',
+            'string.min': 'Coin Type must have at least 2 characters.',
+            'string.max': 'Coin Type must have at most 50 characters.',
+            'string.base': 'Coin Type must be a string.',
+            'any.required': 'Coin Type is required.',
+        }),
 };
 
 export const InvestmentFields = {
     Deposit: {
-        body: ['amount*'],
+        body: ['walletAddress*', 'walletNetwork*', 'amount*', 'coinType*'],
     },
     ProcessDeposit: {
         body: ['status*'],
@@ -62,6 +73,6 @@ export const InvestmentFields = {
         query: ['id', '_id', 'amount', 'status', 'user'],
     },
     Withdraw: {
-        body: ['walletAddress*', 'walletNetwork*', 'amount*'],
+        body: ['walletAddress*', 'walletNetwork*', 'amount*', 'coinType*'],
     },
 };

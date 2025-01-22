@@ -6,7 +6,11 @@ export interface IDepositData {
     user: string | IUser;
     amount: number;
     status?: string;
-    walletAddress: string;
+    wallet: {
+        walletAddress: String,
+        walletNetwork: String,
+        coinType: String
+    }
 }
 
 export interface IDeposit extends IDepositData, Document {
@@ -25,7 +29,11 @@ export interface IWithdrawalData {
     user: string | IUser;
     amount: number;
     status?: string;
-    walletAddress: string;
+    wallet: {
+        walletAddress: String,
+        walletNetwork: String,
+        coinType: String
+    }
 }
 
 export interface IWithdrawal extends IWithdrawalData, Document {

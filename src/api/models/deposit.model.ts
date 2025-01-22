@@ -12,6 +12,15 @@ const depositSchema = new Schema<IDeposit>({
     required: true,
     min: 1  
   },
+  wallet: {
+    type: {
+      walletAddress: String,
+      walletNetwork: String,
+      coinType: String
+    },
+    required: true,
+    _id: false
+  },
   status: {
     type: String,
     required: true,

@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "133297a1-3775-4c0e-b757-503bc97cff16",
-		"name": "TradeX",
+		"name": "GoldenCoin",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "29282463"
 	},
@@ -10,14 +10,14 @@
 			"name": "Withdrawal",
 			"item": [
 				{
-					"name": "Make A Withdrawal",
+					"name": "Request A Withdrawal",
 					"request": {
 						"auth": {
 							"type": "bearer",
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Nzg0NDIzNjBjNDBhOTUzNjA5YWM3YTUiLCJpYXQiOjE3MzY3NDE2MDQsImV4cCI6MTczNjc0MjIwNH0.E8ZOt92KT0TI5K7lDNxOBP5I9IovT3373EQ_hCBNA5Q",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Nzg0NDIzNjBjNDBhOTUzNjA5YWM3YTUiLCJpYXQiOjE3Mzc1NjY1NDUsImV4cCI6MTczNzU3MDE0NX0.YIy9MdjynP8Mif_WloUPyFqAAENzihqaUPtpM_Z1Wi4",
 									"type": "string"
 								}
 							]
@@ -26,7 +26,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"amount\": 500,\n    \"walletAddress\": \"hshshhshss\",\n    \"walletNetwork\": \"ERC20\"\n}",
+							"raw": "{\n    \"amount\": 500,\n    \"walletAddress\": \"hshshhshss\",\n    \"walletNetwork\": \"ERC20\",\n    \"coinType\": \"BTC\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -57,7 +57,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Nzg0M2NlYjE1MmI0MGEwODljNmQ4NDgiLCJpYXQiOjE3MzY3NDIxMzAsImV4cCI6MTczNjc0MjczMH0.9WjT_IBJaciHrJJ3TgJIfSEZaIres1cNYO5wm6K6_B8",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Nzg0M2NlYjE1MmI0MGEwODljNmQ4NDgiLCJpYXQiOjE3Mzc1NjcyNDEsImV4cCI6MTczNzU3MDg0MX0.JhRUrEGGpEqjeSaA_hECzC1rDOJk7w8JSe_cE8riVyE",
 									"type": "string"
 								}
 							]
@@ -74,7 +74,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3069/api/v1/withdrawals/678492f4cf214fc8aede3dd3/confirm",
+							"raw": "localhost:3069/api/v1/withdrawals/67912c9017a27d7e0151e05f/confirm",
 							"host": [
 								"localhost"
 							],
@@ -83,7 +83,7 @@
 								"api",
 								"v1",
 								"withdrawals",
-								"678492f4cf214fc8aede3dd3",
+								"67912c9017a27d7e0151e05f",
 								"confirm"
 							]
 						}
@@ -310,7 +310,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Nzg0NDIzNjBjNDBhOTUzNjA5YWM3YTUiLCJpYXQiOjE3MzY3NDMwMzAsImV4cCI6MTczNjc0MzYzMH0.DEOQTCykCcmISLV69znHcwbcZmdbUjo_Xa3C_-KizdU",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Nzg0NDIzNjBjNDBhOTUzNjA5YWM3YTUiLCJpYXQiOjE3Mzc1NjY1NDUsImV4cCI6MTczNzU3MDE0NX0.YIy9MdjynP8Mif_WloUPyFqAAENzihqaUPtpM_Z1Wi4",
 									"type": "string"
 								}
 							]
@@ -319,7 +319,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"amount\": 1200000\n}",
+							"raw": "{\n    \"amount\": 1200000,\n    \"walletAddress\": \"gvgugggggufgfgf\",\n    \"walletNetwork\": \"erc20\",\n    \"coinType\": \"Bitcoin (BTC)\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -393,7 +393,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Nzg0M2NlYjE1MmI0MGEwODljNmQ4NDgiLCJpYXQiOjE3MzY3NDMxMjYsImV4cCI6MTczNjc0MzcyNn0.HXHUmPN1wUQnkK3b6P9G1uwLIdI1CBt_RVLuOnot5gc",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Nzg0M2NlYjE1MmI0MGEwODljNmQ4NDgiLCJpYXQiOjE3Mzc1NjcyNDEsImV4cCI6MTczNzU3MDg0MX0.JhRUrEGGpEqjeSaA_hECzC1rDOJk7w8JSe_cE8riVyE",
 									"type": "string"
 								}
 							]
@@ -410,7 +410,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3069/api/v1/deposits/6784989ccebf2bf7a2fd9177/confirm",
+							"raw": "localhost:3069/api/v1/deposits/67912a7117a27d7e0151e057/confirm",
 							"host": [
 								"localhost"
 							],
@@ -419,7 +419,7 @@
 								"api",
 								"v1",
 								"deposits",
-								"6784989ccebf2bf7a2fd9177",
+								"67912a7117a27d7e0151e057",
 								"confirm"
 							]
 						}
@@ -468,7 +468,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    // \"email\": \"uzuakpunwasomtuzy@gmail.com\",\n    \"email\": \"somto.onyeka@yahoo.com\",\n    \"password\": \"password\"\n}",
+							"raw": "{\n    // \"email\": \"somto.onyeka@yahoo.com\",\n    \"email\": \"mos.onyeka@yahoo.com\",\n    \"password\": \"password\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"

@@ -49,6 +49,16 @@ export class WithdrawalService<T extends IWithdrawal> extends GenericService<T> 
             throw new NotFoundException(`User not found`)
         }
 
+        const { amount, wallet } = withdrawal
+        const message = `Your withdrawal was successful and $${amount} worth of ${wallet.coinType} was sent to ${wallet.walletAddress} via the ${wallet.walletNetwork} network.\n\n As a result of this, your new dashboard balance is $${user.balance}.`
+        
+        await sendMail({
+            to: user.email,
+            subject: "Withdrawal Successful",
+            from: `The GoldenCoin Team <no-reply@${domain}>`,
+            html: generateHtml(user.firstName, message)
+        })
+
         return {
             message: `Withdrawal successful!`,
             user: user.toJSON()
@@ -130,7 +140,7 @@ export class WithdrawalService<T extends IWithdrawal> extends GenericService<T> 
     }
 
 
-    async withdraw(requestUser: IUser, walletAddress: string, network: string, amount: number) {
+    async withdraw(requestUser: IUser, walletAddress: string, walletNetwork: string, coinType: string, amount: number) {
         const { _id, email } = requestUser
         const { user } = await userService.getUser({ _id })
 
@@ -141,12 +151,16 @@ export class WithdrawalService<T extends IWithdrawal> extends GenericService<T> 
         const withdrawal = await this.create({
             user: user._id,
             amount,
-            walletAddress
+            wallet: {
+                walletAddress,
+                walletNetwork,
+                coinType
+            }
         })
 
         await withdrawal.save()
         
-        let body = `Your withdrawal requeest of $${amount} is processing and will be credited to your wallet address soon. `
+        let body = `Your request to withdraw $${amount} is processing.\n\n On approval, $${amount} worth of ${coinType} will be sent to ${walletAddress} via the ${walletNetwork} network.`
 
         console.log("USSER:", user.email);
         
@@ -157,7 +171,7 @@ export class WithdrawalService<T extends IWithdrawal> extends GenericService<T> 
             html: generateHtml(user.firstName, body)
         })
 
-        body = `A user with email ${email} has requested a withdrawal of $${amount} to be sent to the wallet address ${walletAddress} under ${network} wallet network.`
+        body = `A user with email ${email} requested to withdraw $${amount}.\n\n Confirm their wallet address and send $${amount} worth of ${coinType} to ${walletAddress} on the ${walletNetwork} network.`
 
         const admins = ADMINS.split(",")
         await sendMail({

@@ -16,9 +16,9 @@ class DepositController {
 
     async deposit(req: Request, res: Response) {
         const user = req.user as unknown as IUser;
-        const { amount, walletAddress } = req.body
+        const { amount, walletAddress, coinType, walletNetwork } = req.body
 
-        const response = await depositService.deposit(user, walletAddress, amount)
+        const response = await depositService.deposit(user, walletAddress, walletNetwork, coinType, amount)
 
         return sendResponse(res, 200, true, response.message, response.deposit);
     }

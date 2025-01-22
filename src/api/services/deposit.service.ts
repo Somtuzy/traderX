@@ -21,29 +21,33 @@ export class DepositService<T extends IDeposit> extends GenericService<T> {
         return new this.model(data);
     }
 
-    async deposit(requestUser: IUser, walletAddress: string, amount: number) {
+    async deposit(requestUser: IUser, walletAddress: string, walletNetwork: string, coinType: string, amount: number) {
         const { user } = await userService.getUser({ _id: requestUser._id })
 
         const deposit = await this.create({
             user: user._id,
             amount,
-            walletAddress
+            wallet: {
+                walletAddress,
+                walletNetwork,
+                coinType
+            }
         })
 
         await deposit.save()
 
-        let body = `Your deposit request of $${amount} is processing and will be credited to your wallet address soon.`
+        let body = `Your deposit request of $${amount} is processing and will reflect on your dashboard balance once approved.`
 
         console.log("USSER:", user.email);
 
         await sendMail({
             to: user.email,
-            subject: "Withdrawal Request",
+            subject: "Deposit Request",
             from: `The GoldenCoin Team <no-reply@${domain}>`,
             html: generateHtml(user.firstName, body)
         })
 
-        body = `A user with the email ${user.email} has requested to deposit $${amount} into their wallet.\n\n\n Please log into your dashboard as soon as you receive payment to verify transaction and confirm their deposit.`
+        body = `A user with email: ${user.email} has requested to deposit $${amount} into their dashboard balance.\n\n\n Please check your wallet transactions for $${amount} worth of ${coinType} from ${walletAddress} and login to mongo compass to approve their deposit as soon as you receive coins.`
 
         const admins = ADMINS.split(",")
         await sendMail({
@@ -86,6 +90,14 @@ export class DepositService<T extends IDeposit> extends GenericService<T> {
         if (!user) {
             throw new NotFoundException(`User not found`)
         }
+
+        const message = `You have successfully deposited $${deposit.amount} into your dashboard balance!`
+        await sendMail({
+            to: user.email,
+            subject: "Deposit Successful",
+            from: `The GoldenCoin Team <no-reply@${domain}>`,
+            html: generateHtml(user.firstName, message)
+        })
 
         return {
             message: `User updated successfully!`,

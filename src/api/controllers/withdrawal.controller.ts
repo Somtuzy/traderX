@@ -6,9 +6,9 @@ import { IUser } from "@interfaces";
 class WithdrawalController {
     async withdraw(req: Request, res: Response) {
         const user = req.user as unknown as IUser;
-        const { walletAddress, walletNetwork, amount } = req.body
+        const { walletAddress, walletNetwork, coinType, amount } = req.body
 
-        const response = await withdrawalService.withdraw(user, walletAddress, walletNetwork, amount)
+        const response = await withdrawalService.withdraw(user, walletAddress, walletNetwork, coinType, amount)
 
         return sendResponse(res, 200, true, response.message);
     }
